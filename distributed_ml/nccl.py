@@ -5,7 +5,10 @@ import torch.multiprocessing as mp
 import os
 import numpy as np
 
-#todo: (yinghao) 1) add more examples 2) figure out the underlying principle of primitives in distributed ml
+# TODO: (yinghao) 1) add more examples 2) figure out the underlying principle of primitives in distributed ml
+# nccl stands for Nvidia Collective Communication Library, 
+# which is a library for collective communication operations on multiple GPUs.
+# operations include all-reduce, broadcast, scatter, reduce, all-gather, reduce-scatter, gather.
 def setup(rank, world_size):
     # Initialize the distributed environment.
     dist.init_process_group("nccl", rank=rank, world_size=world_size)
