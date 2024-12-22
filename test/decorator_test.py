@@ -1,6 +1,7 @@
-from decorator.dataclass import DecodingConfig
+from class_.dataclass import DecodingConfig
 import pytest
 
+# test dataclass DecodingConfig
 def test_decoding_config_valid_backend():
     config = DecodingConfig(guided_decoding_backend='outlines')
     # to use the data in dataclass, just use the initialized object as a normal object
