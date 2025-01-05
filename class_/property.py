@@ -10,3 +10,6 @@ class Rectangle:
 def main():
     rec = Rectangle(3, 5)
     print(rec.area)
+
+if __name__ == '__main__':
+    main()
