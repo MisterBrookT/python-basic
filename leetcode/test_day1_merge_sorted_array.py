@@ -9,7 +9,7 @@ The final sorted array should not be returned by the function, but instead be st
 '''
 class Solution:
     @staticmethod
-    def merge(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    def my_solution(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
         Do not return anything, modify nums1 in-place instead.
         """
@@ -31,38 +31,60 @@ class Solution:
                 i -= 1
                 n -= 1
 
+    @staticmethod
+    def official_solution(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        p1, p2 = m - 1, n - 1
+        tail = m + n - 1
+        while p1 >= 0 or p2 >= 0:
+            if p1 == -1:
+                nums1[tail] = nums2[p2]
+                p2 -= 1
+            elif p2 == -1:
+                nums1[tail] = nums1[p1]
+                p1 -= 1
+            elif nums1[p1] > nums2[p2]:
+                nums1[tail] = nums1[p1]
+                p1 -= 1
+            else:
+                nums1[tail] = nums2[p2]
+                p2 -= 1
+            tail -= 1
+
 import pytest
 
-def test_merge():
+def test_mysolution():
     nums1 = [1, 2, 3, 0, 0, 0]
     nums2 = [2, 5, 6]
     m = 3
     n = 3
-    Solution.merge(nums1, m, nums2, n)
+    Solution.my_solution(nums1, m, nums2, n)
     assert nums1 == [1, 2, 2, 3, 5, 6]
 
-def test_merge_with_empty_nums2():
+def test_merge_with_empty_mysolution():
     nums1 = [1, 2, 3, 0, 0, 0]
     nums2 = []
     m = 3
     n = 0
-    Solution.merge(nums1, m, nums2, n)
+    Solution.my_solution(nums1, m, nums2, n)
     assert nums1 == [1, 2, 3, 0, 0, 0]
 
-def test_merge_with_empty_nums1():
+def test_merge_with_empty_mysolution():
     nums1 = [0, 0, 0]
     nums2 = [2, 5, 6]
     m = 0
     n = 3
-    Solution.merge(nums1, m, nums2, n)
+    Solution.my_solution(nums1, m, nums2, n)
     assert nums1 == [2, 5, 6]
 
-def test_merge_with_all_zeros():
+def test_merge_with_all_mysolution():
     nums1 = [0, 0, 0]
     nums2 = [0, 0, 0]
     m = 0
     n = 3
-    Solution.merge(nums1, m, nums2, n)
+    Solution.my_solution(nums1, m, nums2, n)
     assert nums1 == [0, 0, 0]
 
 if __name__ == "__main__":
